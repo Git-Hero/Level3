@@ -3,6 +3,7 @@
 
 #define llist linkedlist
 #include <stdlib.h>
+#include <stdio.h>
 
 /* overview : 
 	struct node ;
@@ -33,15 +34,15 @@ struct llist
 
 struct linkedlist* createList()
 {
-	struct llist *x = malloc(sizeof(struct llist);
+	struct llist *x = malloc(sizeof(struct llist));
 	x->head = NULL;
 	return x;
 }
 
-struct node newnode (int value)
+struct node* newnode (int value)
 {
 	struct node *x = malloc(sizeof(struct node));
-	x.item = value;
+	x->item = value;
 	return x;
 }
 
@@ -53,28 +54,28 @@ void insertatBeg(struct llist *l, int value)
 }
 
 void insertAtend(struct llist *l, int value)
-{;
+{
 	struct node *n = newnode(value);
 	n->next = NULL;
 	if(l->head != NULL) {
 		l->head = n;
-		return 0;
+		return ;
 	}
 	struct node *tmp = l->head;
-	while(temp-next != NULL) 
+	while(tmp->next != NULL) 
 	{
-		temp = temp->next;
+		tmp = tmp->next;
 	}
-	temp->next = n;
+	tmp->next = n;
 }
 
 void insertAfter(struct llist *l, int value, int key)
 {
 	struct node *temp = l->head;
-	if (l->head = NULL)
+	if (l->head == NULL)
 	{
 		printf("List is empty. \n");
-		return 1;
+		return ;
 	}
 	while (temp != NULL)
 	{
@@ -95,19 +96,19 @@ void insertAfter(struct llist *l, int value, int key)
 
 int delAtBeg(struct llist *l)
 {
-	if(l->head = NULL)
+	if(l->head == NULL)
 	{
 		printf("List is already empty. \n");
 		return -1;
 	}
 	int x = l->head->item;
-	struct node *temp = l.head;
+	struct node *temp = l->head;
 	l->head = temp->next;
 	free(temp);
 	return x;
 }
 
-int delAtEnd(struct llist *l
+int delAtEnd(struct llist *l)
 {
 	int x;
 	if (l->head == NULL)
@@ -121,7 +122,7 @@ int delAtEnd(struct llist *l
 		return delAtBeg(l);
 	}
 	struct node *temp1 = temp->next;
-	while (temp1->item != NULL)
+	while (temp1->next != NULL)
 	{
 		temp = temp->next;
 		temp1 = temp1->next;
@@ -153,7 +154,7 @@ int delAfter (struct llist *l, int key)
 			return -1;
 		}
 	}
-	struct node *temp1; = temp->next;
+	struct node *temp1 = temp->next;
 	while (temp1->next != NULL && temp->item!=key)
 	{
 		temp = temp->next;
@@ -166,15 +167,15 @@ int delAfter (struct llist *l, int key)
 	}
 	x = temp1->item;
 	temp->next = temp1->next;
-	return x
+	return x;
 }
 
 int count (struct llist *l)
 {
 	int ctr = 0;
 	struct node *temp = l->head;
-	while (temp == NULL) // {
-		temp = tmp->next;
+	while (temp == NULL) {
+		temp = temp->next;
 		ctr += 1;
 	}
 	return ctr++;
@@ -202,7 +203,6 @@ void reverse(struct llist *l)
 		cur->next = prev;
 		prev = cur;
 		cur = next;
-	//}
-	l>head = prev;
+	}
+	l->head = prev;
 }
-
