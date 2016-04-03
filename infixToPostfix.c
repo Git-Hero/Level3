@@ -22,14 +22,14 @@ typedef struct stack
 
 bool empty(stack *ps)
 {
-	if(ps->top==0)
+	if(ps->top==-1)
 		return true;
 	else
 		return false;
 }
 
 
-void push(stack *ps, int x)
+void push(stack *ps, char x)
 {
 	if(ps->top==N-1)
 	{
@@ -45,27 +45,12 @@ char pop(stack *ps)
 	if(empty(ps))
 	{
 		printf("Underflow\n");
-		return ;
+		return '5';
 	}
 	char a = ps->A[ps->top];
 	ps->top--;
 	return a;
 }
-
-void print(stack *ps,int d)
-{
-	int t= ps->top;
-	while(t>=0)
-	{
-		if(d)
-			printf("%d ",ps->A[t]);
-		else
-			printf("%c ",ps->A[t]);
-		t--;
-	}
-	printf("\n");
-}
-
 
 bool isoperand(char c)
 {
@@ -100,6 +85,10 @@ bool prcd(char a, char b)
 {
 
 	/* returns true if precedence of char a is more than that of b*/
+	if(pr(a)>=pr(b))
+	return true;
+	else
+	return false;
 
 
 }
@@ -145,7 +134,7 @@ int main()
 		{
 			if(!isoperand(str[i][0]))
 			{
-				strcpy(si[f],str[i]);
+				strcpy(si[f++],str[i]);
 			}
 			else
 			{
@@ -155,7 +144,7 @@ int main()
 				}
 				else if(str[i][0]==')')
 				{
-					while(!empty(s))
+					while(!empty(&s))
 					{
 						char t = pop(&s);
 
@@ -184,20 +173,8 @@ int main()
 		}
 		for(i=0;i<f;i++)
 		{
-			printf("%s ",si[i]);
+			printf("%s",si[i]);
 		}
-		printf("\n");
 	}
 	return 0;
-
-
-
-
 }
-
-
-
-
-
-
-
