@@ -7,27 +7,29 @@
 
 read  -p "Enter number of strings: " n
 
-$fname='md5file'
+fname='md5file'
 
 read -p "Enter any remarks for this record : " rem
 
-if [ ! -f "$fname" ]; then
-	read -p "File does not exist ! Create new file? (y/n) : " $choice
-	if [[ $choice = 'y' ]]; then
+if ! -f $fname  
+then
+	read -p "File does not exist ! Create new file? (y/n) : " choice
+	if [ "$choice" = "y" ] 
+              then
 		touch "$fname"
 	else
 		exit 1
-
+        fi
 fi
 echo "$rem" >> $fname
 i=0
-while [[ $i -lt $n ]];
+while [ $i -lt $n ];
 	do
-		read -p "$($i+1) " ip
-		echo -n "$($i+1) " >> $fname
+		read -p $($i+1)  ip
+		echo -n $($i+1) >> $fname
 		echo -n "$ip" > tempfile
 		md5sum tempfile | cut -f1 -d' '  > $fname
-		i=(($i+1))
+		i=$i+1
 	done
 
 echo "" > $fname
