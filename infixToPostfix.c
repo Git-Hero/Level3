@@ -155,7 +155,7 @@ int main()
 				}
 				else if(str[i][0]==')')
 				{
-					while(!empty(s))
+					while(!empty(&s))
 					{
 						char t = pop(&s);
 
