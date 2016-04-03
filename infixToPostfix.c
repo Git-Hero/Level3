@@ -1,25 +1,13 @@
-//converts and infix notation terminated by '?' to postfix,characters are separe
-//Example
-//input :
-//2
-//A + B + C ?
-//A + B - C ?
-//output :
-//AB+C+
-//AB+C-
 #include <stdio.h>
 #include <string.h>
 #include <math.h>
 #include <stdbool.h>
 #define N 100
-
-
 typedef struct stack
 {
 	int top;
 	char A[N];
 }stack;
-
 bool empty(stack *ps)
 {
 	if(ps->top==0)
@@ -27,8 +15,6 @@ bool empty(stack *ps)
 	else
 		return false;
 }
-
-
 void push(stack *ps, int x)
 {
 	if(ps->top==N-1)
@@ -39,7 +25,6 @@ void push(stack *ps, int x)
 	(ps->top)++;
 	ps->A[(ps->top)]=x;
 }
-
 char pop(stack *ps)
 {
 	if(empty(ps))
@@ -51,7 +36,6 @@ char pop(stack *ps)
 	ps->top--;
 	return a;
 }
-
 void print(stack *ps,int d)
 {
 	int t= ps->top;
@@ -65,8 +49,6 @@ void print(stack *ps,int d)
 	}
 	printf("\n");
 }
-
-
 bool isoperand(char c)
 {
 	switch(c)
@@ -81,32 +63,20 @@ bool isoperand(char c)
 		default : return false;
 	}
 }
-
-
-
 int pr ( char a)
 {
 	int c;
-
 	if(a=='+'||a=='-')
 		c=1;
 	else if(a=='*'||a=='/')
 		c=2;
 	return c;
-
 }
-
 bool prcd(char a, char b)
 {
-
 	/* returns true if precedence of char a is more than that of b*/
 
-
 }
-
-
-
-
 int main()
 {
 	int z;
@@ -155,7 +125,7 @@ int main()
 				}
 				else if(str[i][0]==')')
 				{
-					while(!empty(s))
+					while(!empty(&s))
 					{
 						char t = pop(&s);
 
@@ -189,15 +159,4 @@ int main()
 		printf("\n");
 	}
 	return 0;
-
-
-
-
 }
-
-
-
-
-
-
-

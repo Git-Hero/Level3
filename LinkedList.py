@@ -1,8 +1,6 @@
 #!/usr/bin/python3
 
 # Linked list implementation in python (python 3)
-#include <iostream>
-using namespace std;
 
 class Node:
 	def __init__ (self, data):
@@ -33,7 +31,7 @@ class LinkedList:
 		new_node.next = self.head
 		self.head = new_node
 	
-	def delAtBeg (self)
+	def delAtBeg (self):
 		if (self.head is None):
 			print ("List is already empty!");
 			return None
@@ -41,7 +39,7 @@ class LinkedList:
 		self.head = self.head.next.next
 	
 	def insertAtEnd (data):
-		if (self.head is None):
+		if (self.head != None):
 			new_node = Node(data)
 			new_node.next = NULL
 			self.head = new_node
@@ -51,7 +49,7 @@ class LinkedList:
 		tmp.next = Node(data)
 	
 	def delAtEnd (self, data):
-		if (!(self.head is None);
+		if ((self.head != None)):
 			print ("List is empty!")
 			return None
 		if (self.head.next is None):
@@ -67,7 +65,7 @@ class LinkedList:
 
 
 
-l = linkedlist()
+l = LinkedList()
 l.insertAtBeg(10)
 l.insertAtEnd(100)
 l.insertAtBeg(1000)
